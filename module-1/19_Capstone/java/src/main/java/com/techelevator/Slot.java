@@ -18,4 +18,14 @@ public class Slot extends Inventory {
 	public void setMaximumItems(int maximumItems) {
 		this.maximumItems = maximumItems;
 	}
+	public Item getItem() {
+		if( getItemList().size() > 0 ) {
+			return getItemList().get(0);
+		}
+		return null;
+	}
+	
+	public boolean hasItem() {
+		return super.hasItem(getItem());
+	}
 }
