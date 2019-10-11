@@ -19,14 +19,16 @@ import java.util.regex.Pattern;
 public class SalesLog {
 	private final static String TOTAL_SALES_STRING = "TOTAL SALES $";
 	
-	public SalesLog(String logDirectory, Collection<Slot> inventory) {
+	private SalesLog() {}
+	
+	public static void generateLog(String logDirectory, Collection<Slot> inventory) {
 		// find the latest log file
 		PreviousInformation previous = readLatestLog(new File(logDirectory));
 		// write new information
 		writeNewLog(logDirectory, previous, inventory);
 	}
 	
-	private PreviousInformation readLatestLog(File directory) {
+	private static PreviousInformation readLatestLog(File directory) {
 		Map<String,Integer> totals = new HashMap<>();
 		double totalSales = 0.0;
 		
@@ -95,7 +97,7 @@ public class SalesLog {
 		return new PreviousInformation(totals, totalSales);
 	}
 	
-	private void writeNewLog(String directory, PreviousInformation previous, Collection<Slot> current) {
+	private static void writeNewLog(String directory, PreviousInformation previous, Collection<Slot> current) {
 		// add the current inventory and the previous inventory
 		Map<String,Integer> inventory = new HashMap<>();
 		
@@ -145,7 +147,7 @@ public class SalesLog {
 		}
 	}
 	
-	class SalesLogFilenameFilter implements FilenameFilter {
+	static class SalesLogFilenameFilter implements FilenameFilter {
 		@Override
 		public boolean accept(File dir, String name) {
 			if( Pattern.matches("^[0-9]{4}-[0-1][0-9]-[0-3][0-9] [0-1][0-9]_[0-5][0-9]_[0-5][0-9] [A|P]M Vending Machine Sales Report\\.txt$", name) ) {
@@ -155,7 +157,7 @@ public class SalesLog {
 		}
 	}
 	
-	class PreviousInformation {
+	static class PreviousInformation {
 		private Map<String,Integer> previousItems;
 		private double previousSales;
 		

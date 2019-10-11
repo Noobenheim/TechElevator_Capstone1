@@ -47,7 +47,7 @@ public class VendingMachineCLI {
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				displayItems();
 			} else if ( choice.equals("4") ) {
-				new SalesLog("sales reports", machine.getInventory().values());
+				SalesLog.generateLog("sales reports", machine.getInventory().values());
 				
 				System.out.println("Report has been generated.\n\nThank you!");
 				System.exit(0);
