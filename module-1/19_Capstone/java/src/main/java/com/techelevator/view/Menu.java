@@ -16,9 +16,12 @@ public class Menu {
 	}
 
 	public Object getChoiceFromOptions(Object[] options) {
+		return this.getChoiceFromOptions(options, null);
+	}
+	public Object getChoiceFromOptions(Object[] options, String displayUnder) {
 		Object choice = null;
 		while (choice == null) {
-			displayMenuOptions(options);
+			displayMenuOptions(options, displayUnder);
 			choice = getChoiceFromUserInput(options);
 		}
 		return choice;
@@ -27,6 +30,7 @@ public class Menu {
 	private Object getChoiceFromUserInput(Object[] options) {
 		Object choice = null;
 		String userInput = in.nextLine();
+		cls();
 		try {
 			int selectedOption = Integer.valueOf(userInput);
 			if (selectedOption > 0 && selectedOption <= options.length) {
@@ -41,13 +45,22 @@ public class Menu {
 		return choice;
 	}
 
-	private void displayMenuOptions(Object[] options) {
+	private void displayMenuOptions(Object[] options, String displayUnder) {
 		out.println();
 		for (int i = 0; i < options.length; i++) {
 			int optionNum = i + 1;
 			out.println(optionNum + ") " + options[i]);
 		}
+		if( displayUnder != null && !displayUnder.equals("") ) {
+			out.format("\n%s\n", displayUnder);
+		}
 		out.print("\nPlease choose an option >>> ");
 		out.flush();
+	}
+	
+	public void cls() {
+		for( int i=0; i<100; i++ ) {
+			System.out.println();
+		}
 	}
 }
