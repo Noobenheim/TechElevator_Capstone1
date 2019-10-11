@@ -33,10 +33,24 @@ public class VendingMachineCLI {
 	public void run() {
 		menu.cls();
 		while (true) {
-			String choice = (String) menu.getChoiceFromOptions(MAIN_MENU_OPTIONS);
+			Object choiceReturn = menu.getChoiceFromOptions(MAIN_MENU_OPTIONS, true);
+			String choice = "";
+			if( choiceReturn instanceof String ) {
+				choice = (String) choiceReturn;
+			} else if( choiceReturn instanceof Integer ) {
+				choice = Integer.toString((int)choiceReturn);
+			} else {
+				System.out.println("An unknown error has occurred with making a choice.");
+				System.exit(0);
+			}
 
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				displayItems();
+			} else if ( choice.equals("4") ) {
+				new SalesLog("sales reports", machine.getInventory().values());
+				
+				System.out.println("Report has been generated.\n\nThank you!");
+				System.exit(0);
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				do {
 					choice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS, getBalanceMessage());
@@ -98,6 +112,8 @@ public class VendingMachineCLI {
 			} else if (choice.contentEquals(MAIN_MENU_OPTION_EXIT)) {
 				System.out.println("Thank you for using this vending machine!\n\n\nCome back again!");
 				System.exit(0);
+			} else {
+				menu.displayInvalidSelection(choice);
 			}
 		}
 	}

@@ -19,15 +19,21 @@ public class Menu {
 		return this.getChoiceFromOptions(options, null);
 	}
 	public Object getChoiceFromOptions(Object[] options, String displayUnder) {
+		return getChoiceFromOptions(options, displayUnder, false);
+	}
+	public Object getChoiceFromOptions(Object[] options, boolean returnAnything) {
+		return getChoiceFromOptions(options, null, returnAnything);
+	}
+	public Object getChoiceFromOptions(Object[] options, String displayUnder, boolean returnAnything) {
 		Object choice = null;
 		while (choice == null) {
 			displayMenuOptions(options, displayUnder);
-			choice = getChoiceFromUserInput(options);
+			choice = getChoiceFromUserInput(options, returnAnything);
 		}
 		return choice;
 	}
 
-	private Object getChoiceFromUserInput(Object[] options) {
+	private Object getChoiceFromUserInput(Object[] options, boolean returnAnything) {
 		Object choice = null;
 		String userInput = in.nextLine();
 		cls();
@@ -35,12 +41,14 @@ public class Menu {
 			int selectedOption = Integer.valueOf(userInput);
 			if (selectedOption > 0 && selectedOption <= options.length) {
 				choice = options[selectedOption - 1];
+			} else if( returnAnything ) {
+				choice = selectedOption;
 			}
 		} catch (NumberFormatException e) {
 			// eat the exception, an error message will be displayed below since choice will be null
 		}
 		if (choice == null) {
-			out.println("\n*** " + userInput + " is not a valid option ***\n");
+			displayInvalidSelection(userInput);
 		}
 		return choice;
 	}
@@ -60,7 +68,13 @@ public class Menu {
 	
 	public void cls() {
 		for( int i=0; i<100; i++ ) {
-			System.out.println();
+			out.println();
 		}
+		out.flush();
+	}
+	
+	public void displayInvalidSelection(String input) {
+		out.println("\n*** " + input + " is not a valid option ***\n");
+		out.flush();
 	}
 }
