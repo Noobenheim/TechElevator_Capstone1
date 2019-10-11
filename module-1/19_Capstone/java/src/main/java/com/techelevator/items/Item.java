@@ -30,4 +30,32 @@ public abstract class Item {
 	protected void setSound(String sound) {
 		this.sound = sound;
 	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if( !( o instanceof Item ) ) {
+			return false;
+		}
+		Item test = (Item)o;
+		
+		if( test.getCents() != this.getCents() ) {
+			return false;
+		}
+		if( !test.getName().equals(test.getName()) ) {
+			return false;
+		}
+		if( test.getPrice() != this.getPrice() ) {
+			return false;
+		}
+		if( !test.getSound().equals(this.getSound()) ) {
+			return false;
+		}
+		
+		return true;
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("%s (%.2f)", getName(), getPrice());
+	}
 }

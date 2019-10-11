@@ -46,73 +46,106 @@ public class Money {
 		return sum;
 	}
 	
-	private void addBalance(int amount) {
-		if( currentMoney.containsKey(amount) ) {
-			currentMoney.put(amount, currentMoney.get(amount)+1);
+	private void addBalance(int coin, int amount) {
+		if( currentMoney.containsKey(coin) ) {
+			currentMoney.put(coin, currentMoney.get(coin)+amount);
 		}
 	}
 	public void addPenny() {
-		addBalance(PENNY);
+		addPenny(1);
+	}
+	public void addPenny(int count) {
+		addBalance(PENNY,count);
 	}
 	public int getPennies() {
 		return currentMoney.get(PENNY);
 	}
 	public void addNickel() {
-		addBalance(NICKEL);
+		addNickel(1);
+	}
+	public void addNickel(int count) {
+		addBalance(NICKEL,count);
 	}
 	public int getNickels() {
 		return currentMoney.get(NICKEL);
 	}
 	public void addDime() {
-		addBalance(DIME);
+		addDime(1);
+	}
+	public void addDime(int count) {
+		addBalance(DIME,count);
 	}
 	public int getDimes() {
 		return currentMoney.get(DIME);
 	}
 	public void addQuarter() {
-		addBalance(QUARTER);
+		addQuarter(1);
+	}
+	public void addQuarter(int count) {
+		addBalance(QUARTER,count);
 	}
 	public int getQuarters() {
 		return currentMoney.get(QUARTER);
 	}
 	public void addDollar() {
-		addBalance(DOLLAR_BILL);
+		addDollar(1);
+	}
+	public void addDollar(int count) {
+		addBalance(DOLLAR_BILL,count);
 	}
 	public int getDollarBills() {
 		return currentMoney.get(DOLLAR_BILL);
 	}
 	public void addTwoDollars() {
-		addBalance(TWO_DOLLAR_BILL);
+		addTwoDollars(1);
+	}
+	public void addTwoDollars(int count) {
+		addBalance(TWO_DOLLAR_BILL,count);
 	}
 	public int getTwoDollarBills() {
 		return currentMoney.get(TWO_DOLLAR_BILL);
 	}
 	public void addFiveDollars() {
-		addBalance(FIVE_DOLLAR_BILL);
+		addFiveDollars(1);
+	}
+	public void addFiveDollars(int count) {
+		addBalance(FIVE_DOLLAR_BILL,count);
 	}
 	public int getFiveDollarBills() {
 		return currentMoney.get(FIVE_DOLLAR_BILL);
 	}
 	public void addTenDollars() {
-		addBalance(TEN_DOLLAR_BILL);
+		addTenDollars(1);
+	}
+	public void addTenDollars(int count) {
+		addBalance(TEN_DOLLAR_BILL,count);
 	}
 	public int getTenDollarBills() {
 		return currentMoney.get(TEN_DOLLAR_BILL);
 	}
 	public void addTwentyDollars() {
-		addBalance(TWENTY_DOLLAR_BILL);
+		addTwentyDollars(1);
+	}
+	public void addTwentyDollars(int count) {
+		addBalance(TWENTY_DOLLAR_BILL,count);
 	}
 	public int getTwentyDollarBills() {
 		return currentMoney.get(TWENTY_DOLLAR_BILL);
 	}
 	public void addFiftyDollars() {
-		addBalance(FIFTY_DOLLAR_BILL);
+		addFiftyDollars(1);
+	}
+	public void addFiftyDollars(int count) {
+		addBalance(FIFTY_DOLLAR_BILL,count);
 	}
 	public int getFiftyDollarBills() {
 		return currentMoney.get(FIFTY_DOLLAR_BILL);
 	}
 	public void addHunredDollars() {
-		addBalance(HUNDRED_DOLLAR_BILL);
+		addHundredDollars(1);
+	}
+	public void addHundredDollars(int count) {
+		addBalance(HUNDRED_DOLLAR_BILL,count);
 	}
 	public int getHundredDollarBills() {
 		return currentMoney.get(HUNDRED_DOLLAR_BILL);
@@ -169,5 +202,49 @@ public class Money {
 	
 	public static Money copy(Money copy) {
 		return new Money(copy);
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if( !(o instanceof Money) ) {
+			return false;
+		}
+		Money test = (Money)o;
+		
+		if( this.getHundredDollarBills() != test.getHundredDollarBills() ) {
+			return false;
+		}
+		if( this.getFiftyDollarBills() != test.getFiftyDollarBills() ) {
+			return false;
+		}
+		if( this.getTwentyDollarBills() != test.getTwentyDollarBills() ) {
+			return false;
+		}
+		if( this.getTenDollarBills() != test.getTenDollarBills() ) {
+			return false;
+		}
+		if( this.getFiveDollarBills() != test.getFiveDollarBills() ) {
+			return false;
+		}
+		if( this.getTwoDollarBills() != test.getTwoDollarBills() ) {
+			return false;
+		}
+		if( this.getDollarBills() != test.getDollarBills() ) {
+			return false;
+		}
+		if( this.getQuarters() != test.getQuarters() ) {
+			return false;
+		}
+		if( this.getDimes() != test.getDimes() ) {
+			return false;
+		}
+		if( this.getNickels() != test.getNickels() ) {
+			return false;
+		}
+		if( this.getPennies() != test.getPennies() ) {
+			return false;
+		}
+		
+		return true;
 	}
 }

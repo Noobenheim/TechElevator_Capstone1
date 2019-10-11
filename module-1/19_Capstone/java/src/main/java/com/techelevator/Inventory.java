@@ -39,6 +39,14 @@ public class Inventory {
 		return inventory.containsKey(item) && inventory.get(item) > 0;
 	}
 	
+	public int getQuantity(Item item) {
+		if( !inventory.containsKey(item) ) {
+			return 0;
+		}
+		
+		return inventory.get(item);
+	}
+	
 	public List<Item> getItemList() {
 		List<Item> result = new ArrayList<>();
 		

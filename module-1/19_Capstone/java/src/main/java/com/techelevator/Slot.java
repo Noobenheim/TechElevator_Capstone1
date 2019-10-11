@@ -28,4 +28,24 @@ public class Slot extends Inventory {
 	public boolean hasItem() {
 		return super.hasItem(getItem());
 	}
+	
+	public int getQuantity() {
+		return super.getQuantity(getItem());
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if( !(o instanceof Slot) ) {
+			return false;
+		}
+		Slot test = (Slot)o;
+		if( !test.getItem().equals(this.getItem()) ) {
+			return false;
+		}
+		if( this.getMaximumItems() != test.getMaximumItems() ) {
+			return false;
+		}
+		
+		return true;
+	}
 }

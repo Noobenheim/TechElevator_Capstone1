@@ -18,8 +18,9 @@ public class VendingMachine {
 	private Map<String,Slot> inventory = new LinkedHashMap<>();
 	private Money money = new Money();
 	
+	private AuditLog log = new AuditLog("Log.txt");
+	
 	public VendingMachine(String inventoryInputFile) {
-		
 		File file = new File(inventoryInputFile);
 		try(Scanner fileScanner = new Scanner(file)) {
 			while( fileScanner.hasNextLine() ) {
@@ -50,10 +51,10 @@ public class VendingMachine {
 		}
 	}
 	
-	public void loadItems(String slotName, String name, double price, String type) {
+	private void loadItems(String slotName, String name, double price, String type) {
 		loadItems(slotName, name, price, type, MAX_ITEMS);
 	}
-	public void loadItems(String slotName, String name, double price, String type, int quantity) {
+	private void loadItems(String slotName, String name, double price, String type, int quantity) {
 		Item item;
 		Slot slot = new Slot();
 		
@@ -92,8 +93,11 @@ public class VendingMachine {
 		}
 		
 		Item item = slot.getItem();
-		if( money.getBalance() >= item.getPrice() && slot.removeItem(slot.getItem()) ) {
+		if( money.getBalance() >= item.getCents() && slot.removeItem(slot.getItem()) ) {
 			money.subtractBalance(item.getCents());
+			
+			log.log(String.format("%s %s $%.2f, $%.2f", item.getName(), choice.trim().toUpperCase(), item.getPrice(), this.getMoneyInMachine()));
+			
 			return item;
 		}
 		return null;
@@ -114,7 +118,7 @@ public class VendingMachine {
 			return false;
 		}
 		
-		if( slot.getItem().getPrice() > money.getBalance() ) {
+		if( slot.getItem().getCents() > money.getBalance() ) {
 			return false;
 		}
 		
@@ -137,6 +141,9 @@ public class VendingMachine {
 		return money.getBalance() / 100.0;
 	}
 	
+	public boolean putMoneyInMachine(int centsAmount) {
+		return putMoneyInMachine(centsAmount/100.0);
+	}
 	public boolean putMoneyInMachine(double amount) {
 		int amountInCents = (int)(amount * 100.0);
 		
@@ -166,6 +173,8 @@ public class VendingMachine {
 				return false;
 		}
 		
+		log.log(String.format("FEED MONEY: $%.2f $%.2f", amount, getMoneyInMachine()));
+		
 		money.convertToDenomination(Money.NICKEL);
 		return true;
 	}
@@ -174,6 +183,9 @@ public class VendingMachine {
 		money.convertToDenomination(Money.QUARTER);
 		Money copy = Money.copy(money);
 		money.clear();
+		
+		log.log(String.format("GIVE CHANGE: $%.2f $%.2f", (copy.getBalance()/100.0), this.getMoneyInMachine()));
+		
 		return copy;
 	}
 }

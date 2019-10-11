@@ -75,8 +75,12 @@ public class VendingMachineCLI {
 						} else {
 							Item output = machine.getItem(itemChoice);
 							
-							System.out.format("Dispensing %s for $%.2f ($%.2f remaining balance)\n", output.getName(), output.getPrice(), machine.getMoneyInMachine());
-							System.out.println(output.getSound());
+							if( output == null ) {
+								System.out.println("An unknown error has occurred.");
+							} else {
+								System.out.format("Dispensing %s for $%.2f ($%.2f remaining balance)\n", output.getName(), output.getPrice(), machine.getMoneyInMachine());
+								System.out.println(output.getSound());
+							}
 						}
 					}
 				} while( !choice.equals(PURCHASE_MENU_OPTION_FINISH_TRANSACTION) );
@@ -92,13 +96,14 @@ public class VendingMachineCLI {
 				System.out.format("\t%d Dimes dispensed.\n", dimesReturned);
 				System.out.format("\t%d Nickels dispensed.\n", nickelsReturned);
 			} else if (choice.contentEquals(MAIN_MENU_OPTION_EXIT)) {
+				System.out.println("Thank you for using this vending machine!\n\n\nCome back again!");
 				System.exit(0);
 			}
 		}
 	}
 	
 	private String getBalanceMessage() {
-		return String.format("Current balance : $%.2f", machine.getMoneyInMachine());
+		return String.format("Current Money Provided: $%.2f", machine.getMoneyInMachine());
 	}
 	
 	private void displayItems() {
@@ -108,8 +113,6 @@ public class VendingMachineCLI {
 		for( Map.Entry<String,Slot> entry : inventory.entrySet() ) {
 			if( count>0 && count%4 == 0 ) {
 				System.out.println();
-			} else if( count>0 ){
-				System.out.print("\t");
 			}
 			
 			Slot slot = entry.getValue();
@@ -120,7 +123,7 @@ public class VendingMachineCLI {
 				continue;
 			}
 			
-			System.out.format("%3s %-20s $%.2f", entry.getKey(), slotItem.getName(), slotItem.getPrice());
+			System.out.format("%3s %-20s $%.2f %-10s", entry.getKey(), slotItem.getName(), slotItem.getPrice(), slot.getQuantity()>0?"("+slot.getQuantity()+" left)":"SOLD OUT");
 			count++;
 		}
 		System.out.println();

@@ -49,7 +49,7 @@ public class Menu {
 		out.println();
 		for (int i = 0; i < options.length; i++) {
 			int optionNum = i + 1;
-			out.println(optionNum + ") " + options[i]);
+			out.println("("+optionNum + ") " + options[i]);
 		}
 		if( displayUnder != null && !displayUnder.equals("") ) {
 			out.format("\n%s\n", displayUnder);
