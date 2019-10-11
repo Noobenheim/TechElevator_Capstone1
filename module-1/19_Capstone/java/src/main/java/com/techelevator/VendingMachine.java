@@ -167,7 +167,7 @@ public class VendingMachine {
 				money.addFiftyDollars();
 				break;
 			case Money.HUNDRED_DOLLAR_BILL:
-				money.addHunredDollars();
+				money.addHundredDollars();
 				break;
 			default:
 				return false;

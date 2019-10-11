@@ -1,24 +1,25 @@
 package com.techelevator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 import com.techelevator.items.Item;
 
 public class Inventory {
-	Map<Item,Integer> inventory = new HashMap<>();
+	protected Map<Item,Integer> inventory = new LinkedHashMap<>();
 	
-	public void addItem(Item item) {
-		addItem(item, 1);
+	public boolean addItem(Item item) {
+		return addItem(item, 1);
 	}
-	public void addItem(Item item, int quantity) {
+	public boolean addItem(Item item, int quantity) {
 		if( inventory.containsKey(item) ) {
 			inventory.put(item, inventory.get(item) + quantity);
 		} else {
 			inventory.put(item, quantity);
 		}
+		return true;
 	}
 	
 	public boolean removeItem(Item item) {

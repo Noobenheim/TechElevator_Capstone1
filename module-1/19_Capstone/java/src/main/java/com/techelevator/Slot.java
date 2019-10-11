@@ -2,14 +2,32 @@ package com.techelevator;
 
 import com.techelevator.items.Item;
 
+// Slot is an inventory type that only allows one item
 public class Slot extends Inventory {
 	private int maximumItems = Integer.MAX_VALUE;
+	private Item itemCompare = null;
 
+	public boolean addItem() {
+		return addItem(1);
+	}
+	public boolean addItem(int quantity) {
+		return addItem(itemCompare, quantity);
+	}
 	@Override
-	public void addItem(Item item, int quantity) {
-		if( !hasItem(item) || inventory.get(item) + quantity < maximumItems ) {
-			super.addItem(item, quantity);
+	public boolean addItem(Item item, int quantity) {
+		if( itemCompare != null && !itemCompare.equals(item) ) {
+			return false;
 		}
+		if( quantity > maximumItems ) {
+			return false;
+		}
+		if( !hasItem(item) || inventory.get(item) + quantity <= maximumItems ) {
+			if( itemCompare == null ) {
+				itemCompare = item;
+			}
+			return super.addItem(item, quantity);
+		}
+		return false;
 	}
 	
 	public int getMaximumItems() {
@@ -26,11 +44,15 @@ public class Slot extends Inventory {
 	}
 	
 	public boolean hasItem() {
-		return super.hasItem(getItem());
+		return super.hasItem(itemCompare);
 	}
 	
 	public int getQuantity() {
-		return super.getQuantity(getItem());
+		return super.getQuantity(itemCompare);
+	}
+	
+	public boolean removeItem() {
+		return super.removeItem(itemCompare);
 	}
 	
 	@Override
@@ -39,7 +61,7 @@ public class Slot extends Inventory {
 			return false;
 		}
 		Slot test = (Slot)o;
-		if( !test.getItem().equals(this.getItem()) ) {
+		if( !test.itemCompare.equals(this.getItem()) ) {
 			return false;
 		}
 		if( this.getMaximumItems() != test.getMaximumItems() ) {

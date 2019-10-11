@@ -141,7 +141,7 @@ public class Money {
 	public int getFiftyDollarBills() {
 		return currentMoney.get(FIFTY_DOLLAR_BILL);
 	}
-	public void addHunredDollars() {
+	public void addHundredDollars() {
 		addHundredDollars(1);
 	}
 	public void addHundredDollars(int count) {
@@ -211,6 +211,9 @@ public class Money {
 		}
 		Money test = (Money)o;
 		
+		if( this.getBalance() != test.getBalance() ) {
+			return false;
+		}
 		if( this.getHundredDollarBills() != test.getHundredDollarBills() ) {
 			return false;
 		}
