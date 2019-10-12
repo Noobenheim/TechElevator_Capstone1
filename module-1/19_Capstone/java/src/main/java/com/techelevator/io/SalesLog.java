@@ -22,6 +22,8 @@ import com.techelevator.vendingmachine.VendingMachine;
 public class SalesLog {
 	private final static String TOTAL_SALES_STRING = "TOTAL SALES $";
 	
+	private static Map<String,Integer> lastInventoryLogged = new HashMap<>();
+	
 	private SalesLog() {}
 	
 	public static void generateLog(String logDirectory, Collection<Slot> inventory) {
@@ -108,11 +110,12 @@ public class SalesLog {
 		for( Map.Entry<String,Integer> entry : previous.getItems().entrySet() ) {
 			inventory.put(entry.getKey(), entry.getValue());
 		}
-		// loop through current
+		// loop through current that hasn't been logged
 		double currentTotal = 0.0;
 		for( Slot slot : current ) {
 			String name = slot.getItem().getName();
-			int quantity = VendingMachine.MAX_ITEMS - slot.getQuantity();
+			int lastQuantity = lastInventoryLogged.containsKey(name)?lastInventoryLogged.get(name):VendingMachine.MAX_ITEMS;
+			int quantity = lastQuantity - slot.getQuantity();
 			double price = slot.getItem().getPrice();
 			
 			if( inventory.containsKey(name) ) {
@@ -145,6 +148,10 @@ public class SalesLog {
 			writer.println();
 			writer.format("%s%.2f", TOTAL_SALES_STRING, (currentTotal + previous.previousSales));
 			writer.flush();
+			
+			for( Slot slot : current ) {
+				lastInventoryLogged.put(slot.getItem().getName(), slot.getQuantity());
+			};
 		} catch (IOException e) {
 			System.out.println("Unable to write to file "+filename);
 		}

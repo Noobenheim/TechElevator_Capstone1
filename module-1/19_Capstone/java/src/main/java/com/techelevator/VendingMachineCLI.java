@@ -59,8 +59,7 @@ public class VendingMachineCLI {
 			} else if ( choice.equals("4") ) {
 				SalesLog.generateLog("sales reports", machine.getInventory().values());
 				
-				System.out.println("Report has been generated.\n\nThank you!");
-				System.exit(0);
+				System.out.println("Report has been generated.\n\nThank you!\n\n");
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				do {
 					choice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS, getBalanceMessage());
