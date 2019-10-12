@@ -8,7 +8,7 @@ public class AuditLog extends Log {
 	public AuditLog(String fileName) {
 		super(fileName, format);
 
-		fileWriter.println("--------------Starting AuditLog for day.");
+		//fileWriter.println("--------------Starting AuditLog for day.");
 	}
 	
 	@Override

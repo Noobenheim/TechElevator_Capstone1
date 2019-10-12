@@ -101,7 +101,7 @@ public class VendingMachineCLI {
 							if( output == null ) {
 								System.out.println("An unknown error has occurred.");
 							} else {
-								System.out.format("Dispensing %s for $%.2f ($%.2f remaining balance)\n", output.getName(), output.getPrice(), machine.getMoneyInMachine());
+								System.out.format("Dispensing %s for $%.2f ($%.2f remaining balance)\n\n", output.getName(), output.getPrice(), machine.getMoneyInMachine());
 								System.out.println(output.getSound());
 							}
 						}
@@ -115,9 +115,9 @@ public class VendingMachineCLI {
 				int nickelsReturned = change.getNickels();
 				
 				System.out.println("Dispensing Change: ");
-				System.out.format("\t%d Quarters dispensed.\n", quartersReturned);
-				System.out.format("\t%d Dimes dispensed.\n", dimesReturned);
-				System.out.format("\t%d Nickels dispensed.\n", nickelsReturned);
+				System.out.format("\t%d Quarter%s dispensed.\n", quartersReturned, quartersReturned==1?"":"s");
+				System.out.format("\t%d Dime%s dispensed.\n", dimesReturned, dimesReturned==1?"":"s");
+				System.out.format("\t%d Nickel%s dispensed.\n", nickelsReturned, nickelsReturned==1?"":"s");
 			} else if (choice.contentEquals(MAIN_MENU_OPTION_EXIT)) {
 				System.out.println("Thank you for using this vending machine!\n\n\nCome back again!");
 				System.exit(0);
