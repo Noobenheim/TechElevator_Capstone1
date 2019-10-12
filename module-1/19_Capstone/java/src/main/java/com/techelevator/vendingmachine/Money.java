@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.vendingmachine;
 
 import java.util.LinkedHashMap;
 import java.util.Map;

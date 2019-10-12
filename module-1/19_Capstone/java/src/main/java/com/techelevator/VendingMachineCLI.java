@@ -2,8 +2,13 @@ package com.techelevator;
 
 import java.util.Map;
 
-import com.techelevator.VendingMachine.BadFileException;
+import com.techelevator.io.SalesLog;
+import com.techelevator.io.UserInput;
 import com.techelevator.items.Item;
+import com.techelevator.items.Slot;
+import com.techelevator.vendingmachine.Money;
+import com.techelevator.vendingmachine.VendingMachine;
+import com.techelevator.vendingmachine.VendingMachine.BadFileException;
 import com.techelevator.view.Menu;
 
 public class VendingMachineCLI {

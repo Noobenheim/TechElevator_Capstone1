@@ -1,11 +1,9 @@
-package com.techelevator;
+package com.techelevator.items;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.techelevator.items.Item;
 
 public class Inventory {
 	protected Map<Item,Integer> inventory = new LinkedHashMap<>();

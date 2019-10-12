@@ -7,6 +7,7 @@ import org.junit.Test;
 import com.techelevator.items.Candy;
 import com.techelevator.items.Gum;
 import com.techelevator.items.Item;
+import com.techelevator.items.Slot;
 
 public class SlotTest {
 	Slot actual;

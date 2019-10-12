@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.vendingmachine;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -6,11 +6,13 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+import com.techelevator.io.AuditLog;
 import com.techelevator.items.Candy;
 import com.techelevator.items.Chip;
 import com.techelevator.items.Drink;
 import com.techelevator.items.Gum;
 import com.techelevator.items.Item;
+import com.techelevator.items.Slot;
 
 public class VendingMachine {
 	public final static int MAX_ITEMS = 5;
@@ -189,7 +191,7 @@ public class VendingMachine {
 		return copy;
 	}
 	
-	class BadFileException extends Exception {
+	public class BadFileException extends Exception {
 		private static final long serialVersionUID = -35013279513318912L;
 		
 		public BadFileException(String message) {

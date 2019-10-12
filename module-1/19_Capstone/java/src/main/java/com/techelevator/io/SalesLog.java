@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -13,6 +13,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+
+import com.techelevator.items.Slot;
+import com.techelevator.vendingmachine.VendingMachine;
 
 // 2019-10-11 12:45:00 PM Vending Machine Sales Report.txt
 

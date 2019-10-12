@@ -1,6 +1,4 @@
-package com.techelevator;
-
-import com.techelevator.items.Item;
+package com.techelevator.items;
 
 // Slot is an inventory type that only allows one item
 public class Slot extends Inventory {

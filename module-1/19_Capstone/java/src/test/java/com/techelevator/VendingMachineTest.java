@@ -7,11 +7,10 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.techelevator.Money;
-import com.techelevator.Slot;
-import com.techelevator.VendingMachine;
-import com.techelevator.VendingMachine.BadFileException;
 import com.techelevator.items.*;
+import com.techelevator.vendingmachine.Money;
+import com.techelevator.vendingmachine.VendingMachine;
+import com.techelevator.vendingmachine.VendingMachine.BadFileException;
 
 public class VendingMachineTest {
 	VendingMachine machine;

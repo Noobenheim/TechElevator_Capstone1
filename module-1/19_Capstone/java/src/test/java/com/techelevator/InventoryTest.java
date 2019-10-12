@@ -11,6 +11,7 @@ import com.techelevator.items.Candy;
 import com.techelevator.items.Chip;
 import com.techelevator.items.Drink;
 import com.techelevator.items.Gum;
+import com.techelevator.items.Inventory;
 import com.techelevator.items.Item;
 
 public class InventoryTest {

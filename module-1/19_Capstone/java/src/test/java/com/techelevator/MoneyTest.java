@@ -2,6 +2,9 @@ package com.techelevator;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import com.techelevator.vendingmachine.Money;
+
 import org.junit.Assert;
 
 public class MoneyTest {
