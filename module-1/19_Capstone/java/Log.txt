@@ -152,3 +152,274 @@
 10/11/2019 06:25:24 PM FEED MONEY: $5.00 $5.00
 10/11/2019 06:25:36 PM Wonka Bar B3 $1.50, $3.50
 10/11/2019 06:25:52 PM GIVE CHANGE: $3.50 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:13:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:13:23 PM GIVE CHANGE: $100.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:13:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:13:23 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:13:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:13:23 PM Triplemint D4 $0.75, $99.25
+--------------Starting AuditLog for day.
+10/11/2019 08:13:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:13:23 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:13:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:13:23 PM FEED MONEY: $1.00 $101.00
+--------------Starting AuditLog for day.
+10/11/2019 08:13:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:13:23 PM Potato Crisps A1 $3.05, $96.95
+10/11/2019 08:13:23 PM Potato Crisps A1 $3.05, $93.90
+10/11/2019 08:13:23 PM Potato Crisps A1 $3.05, $90.85
+10/11/2019 08:13:23 PM Potato Crisps A1 $3.05, $87.80
+10/11/2019 08:13:23 PM Potato Crisps A1 $3.05, $84.75
+--------------Starting AuditLog for day.
+10/11/2019 08:13:23 PM FEED MONEY: $100.00 $100.00
+--------------Starting AuditLog for day.
+10/11/2019 08:13:23 PM FEED MONEY: $5.00 $5.00
+--------------Starting AuditLog for day.
+10/11/2019 08:18:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:18:23 PM GIVE CHANGE: $100.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:18:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:18:23 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:18:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:18:23 PM Triplemint D4 $0.75, $99.25
+--------------Starting AuditLog for day.
+10/11/2019 08:18:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:18:23 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:18:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:18:23 PM FEED MONEY: $1.00 $101.00
+--------------Starting AuditLog for day.
+10/11/2019 08:18:23 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:18:23 PM Potato Crisps A1 $3.05, $96.95
+10/11/2019 08:18:23 PM Potato Crisps A1 $3.05, $93.90
+10/11/2019 08:18:23 PM Potato Crisps A1 $3.05, $90.85
+10/11/2019 08:18:23 PM Potato Crisps A1 $3.05, $87.80
+10/11/2019 08:18:23 PM Potato Crisps A1 $3.05, $84.75
+--------------Starting AuditLog for day.
+10/11/2019 08:18:23 PM FEED MONEY: $100.00 $100.00
+--------------Starting AuditLog for day.
+10/11/2019 08:18:23 PM FEED MONEY: $5.00 $5.00
+--------------Starting AuditLog for day.
+10/11/2019 08:18:23 PM FEED MONEY: $2.00 $2.00
+10/11/2019 08:18:23 PM GIVE CHANGE: $2.00 $0.00
+10/11/2019 08:18:23 PM FEED MONEY: $10.00 $10.00
+10/11/2019 08:18:23 PM GIVE CHANGE: $10.00 $0.00
+10/11/2019 08:18:23 PM FEED MONEY: $20.00 $20.00
+10/11/2019 08:18:23 PM GIVE CHANGE: $20.00 $0.00
+10/11/2019 08:18:23 PM FEED MONEY: $50.00 $50.00
+10/11/2019 08:18:23 PM GIVE CHANGE: $50.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:20:08 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:20:08 PM GIVE CHANGE: $100.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:20:08 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:20:08 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:20:08 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:20:08 PM Triplemint D4 $0.75, $99.25
+--------------Starting AuditLog for day.
+10/11/2019 08:20:08 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:20:08 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:20:08 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:20:08 PM FEED MONEY: $1.00 $101.00
+--------------Starting AuditLog for day.
+10/11/2019 08:20:08 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:20:08 PM Potato Crisps A1 $3.05, $96.95
+10/11/2019 08:20:08 PM Potato Crisps A1 $3.05, $93.90
+10/11/2019 08:20:08 PM Potato Crisps A1 $3.05, $90.85
+10/11/2019 08:20:08 PM Potato Crisps A1 $3.05, $87.80
+10/11/2019 08:20:08 PM Potato Crisps A1 $3.05, $84.75
+--------------Starting AuditLog for day.
+10/11/2019 08:20:08 PM FEED MONEY: $100.00 $100.00
+--------------Starting AuditLog for day.
+10/11/2019 08:20:08 PM FEED MONEY: $5.00 $5.00
+--------------Starting AuditLog for day.
+10/11/2019 08:20:08 PM FEED MONEY: $2.00 $2.00
+10/11/2019 08:20:08 PM GIVE CHANGE: $2.00 $0.00
+10/11/2019 08:20:08 PM FEED MONEY: $10.00 $10.00
+10/11/2019 08:20:08 PM GIVE CHANGE: $10.00 $0.00
+10/11/2019 08:20:08 PM FEED MONEY: $20.00 $20.00
+10/11/2019 08:20:08 PM GIVE CHANGE: $20.00 $0.00
+10/11/2019 08:20:08 PM FEED MONEY: $50.00 $50.00
+10/11/2019 08:20:08 PM GIVE CHANGE: $50.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:27:18 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:27:18 PM GIVE CHANGE: $100.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:27:18 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:27:18 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:27:18 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:27:18 PM Triplemint D4 $0.75, $99.25
+--------------Starting AuditLog for day.
+10/11/2019 08:27:18 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:27:18 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:27:18 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:27:18 PM FEED MONEY: $1.00 $101.00
+--------------Starting AuditLog for day.
+10/11/2019 08:27:18 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:27:18 PM Potato Crisps A1 $3.05, $96.95
+10/11/2019 08:27:18 PM Potato Crisps A1 $3.05, $93.90
+10/11/2019 08:27:18 PM Potato Crisps A1 $3.05, $90.85
+10/11/2019 08:27:18 PM Potato Crisps A1 $3.05, $87.80
+10/11/2019 08:27:18 PM Potato Crisps A1 $3.05, $84.75
+--------------Starting AuditLog for day.
+10/11/2019 08:27:18 PM FEED MONEY: $100.00 $100.00
+--------------Starting AuditLog for day.
+10/11/2019 08:27:18 PM FEED MONEY: $5.00 $5.00
+--------------Starting AuditLog for day.
+10/11/2019 08:27:18 PM FEED MONEY: $2.00 $2.00
+10/11/2019 08:27:18 PM GIVE CHANGE: $2.00 $0.00
+10/11/2019 08:27:18 PM FEED MONEY: $10.00 $10.00
+10/11/2019 08:27:18 PM GIVE CHANGE: $10.00 $0.00
+10/11/2019 08:27:18 PM FEED MONEY: $20.00 $20.00
+10/11/2019 08:27:18 PM GIVE CHANGE: $20.00 $0.00
+10/11/2019 08:27:18 PM FEED MONEY: $50.00 $50.00
+10/11/2019 08:27:18 PM GIVE CHANGE: $50.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:29:32 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:29:32 PM GIVE CHANGE: $100.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:29:32 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:29:32 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:29:32 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:29:32 PM Triplemint D4 $0.75, $99.25
+--------------Starting AuditLog for day.
+10/11/2019 08:29:32 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:29:32 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:29:32 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:29:32 PM FEED MONEY: $1.00 $101.00
+--------------Starting AuditLog for day.
+10/11/2019 08:29:32 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:29:32 PM Potato Crisps A1 $3.05, $96.95
+10/11/2019 08:29:32 PM Potato Crisps A1 $3.05, $93.90
+10/11/2019 08:29:32 PM Potato Crisps A1 $3.05, $90.85
+10/11/2019 08:29:32 PM Potato Crisps A1 $3.05, $87.80
+10/11/2019 08:29:32 PM Potato Crisps A1 $3.05, $84.75
+--------------Starting AuditLog for day.
+10/11/2019 08:29:32 PM FEED MONEY: $100.00 $100.00
+--------------Starting AuditLog for day.
+10/11/2019 08:29:32 PM FEED MONEY: $5.00 $5.00
+--------------Starting AuditLog for day.
+10/11/2019 08:29:32 PM FEED MONEY: $2.00 $2.00
+10/11/2019 08:29:32 PM GIVE CHANGE: $2.00 $0.00
+10/11/2019 08:29:32 PM FEED MONEY: $10.00 $10.00
+10/11/2019 08:29:32 PM GIVE CHANGE: $10.00 $0.00
+10/11/2019 08:29:32 PM FEED MONEY: $20.00 $20.00
+10/11/2019 08:29:32 PM GIVE CHANGE: $20.00 $0.00
+10/11/2019 08:29:32 PM FEED MONEY: $50.00 $50.00
+10/11/2019 08:29:32 PM GIVE CHANGE: $50.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:31:17 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:31:17 PM GIVE CHANGE: $100.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:31:17 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:31:17 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:31:17 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:31:17 PM Triplemint D4 $0.75, $99.25
+--------------Starting AuditLog for day.
+10/11/2019 08:31:17 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:31:17 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:31:17 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:31:17 PM FEED MONEY: $1.00 $101.00
+--------------Starting AuditLog for day.
+10/11/2019 08:31:17 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:31:17 PM Potato Crisps A1 $3.05, $96.95
+10/11/2019 08:31:17 PM Potato Crisps A1 $3.05, $93.90
+10/11/2019 08:31:17 PM Potato Crisps A1 $3.05, $90.85
+10/11/2019 08:31:17 PM Potato Crisps A1 $3.05, $87.80
+10/11/2019 08:31:17 PM Potato Crisps A1 $3.05, $84.75
+--------------Starting AuditLog for day.
+10/11/2019 08:31:17 PM FEED MONEY: $100.00 $100.00
+--------------Starting AuditLog for day.
+10/11/2019 08:31:17 PM FEED MONEY: $5.00 $5.00
+--------------Starting AuditLog for day.
+10/11/2019 08:31:17 PM FEED MONEY: $2.00 $2.00
+10/11/2019 08:31:17 PM GIVE CHANGE: $2.00 $0.00
+10/11/2019 08:31:17 PM FEED MONEY: $10.00 $10.00
+10/11/2019 08:31:17 PM GIVE CHANGE: $10.00 $0.00
+10/11/2019 08:31:17 PM FEED MONEY: $20.00 $20.00
+10/11/2019 08:31:17 PM GIVE CHANGE: $20.00 $0.00
+10/11/2019 08:31:17 PM FEED MONEY: $50.00 $50.00
+10/11/2019 08:31:17 PM GIVE CHANGE: $50.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:34:21 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:34:21 PM GIVE CHANGE: $100.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:34:22 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:34:22 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:34:22 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:34:22 PM Triplemint D4 $0.75, $99.25
+--------------Starting AuditLog for day.
+10/11/2019 08:34:22 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:34:22 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:34:22 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:34:22 PM FEED MONEY: $1.00 $101.00
+--------------Starting AuditLog for day.
+10/11/2019 08:34:22 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:34:22 PM Potato Crisps A1 $3.05, $96.95
+10/11/2019 08:34:22 PM Potato Crisps A1 $3.05, $93.90
+10/11/2019 08:34:22 PM Potato Crisps A1 $3.05, $90.85
+10/11/2019 08:34:22 PM Potato Crisps A1 $3.05, $87.80
+10/11/2019 08:34:22 PM Potato Crisps A1 $3.05, $84.75
+--------------Starting AuditLog for day.
+10/11/2019 08:34:22 PM FEED MONEY: $100.00 $100.00
+--------------Starting AuditLog for day.
+10/11/2019 08:34:22 PM FEED MONEY: $5.00 $5.00
+--------------Starting AuditLog for day.
+10/11/2019 08:34:22 PM FEED MONEY: $2.00 $2.00
+10/11/2019 08:34:22 PM GIVE CHANGE: $2.00 $0.00
+10/11/2019 08:34:22 PM FEED MONEY: $10.00 $10.00
+10/11/2019 08:34:22 PM GIVE CHANGE: $10.00 $0.00
+10/11/2019 08:34:22 PM FEED MONEY: $20.00 $20.00
+10/11/2019 08:34:22 PM GIVE CHANGE: $20.00 $0.00
+10/11/2019 08:34:22 PM FEED MONEY: $50.00 $50.00
+10/11/2019 08:34:22 PM GIVE CHANGE: $50.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:35:45 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:35:45 PM GIVE CHANGE: $100.00 $0.00
+--------------Starting AuditLog for day.
+10/11/2019 08:35:45 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:35:45 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:35:45 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:35:45 PM Triplemint D4 $0.75, $99.25
+--------------Starting AuditLog for day.
+10/11/2019 08:35:45 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:35:45 PM Potato Crisps A1 $3.05, $96.95
+--------------Starting AuditLog for day.
+10/11/2019 08:35:45 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:35:45 PM FEED MONEY: $1.00 $101.00
+--------------Starting AuditLog for day.
+10/11/2019 08:35:45 PM FEED MONEY: $100.00 $100.00
+10/11/2019 08:35:45 PM Potato Crisps A1 $3.05, $96.95
+10/11/2019 08:35:45 PM Potato Crisps A1 $3.05, $93.90
+10/11/2019 08:35:45 PM Potato Crisps A1 $3.05, $90.85
+10/11/2019 08:35:45 PM Potato Crisps A1 $3.05, $87.80
+10/11/2019 08:35:45 PM Potato Crisps A1 $3.05, $84.75
+--------------Starting AuditLog for day.
+10/11/2019 08:35:45 PM FEED MONEY: $100.00 $100.00
+--------------Starting AuditLog for day.
+10/11/2019 08:35:45 PM FEED MONEY: $5.00 $5.00
+--------------Starting AuditLog for day.
+10/11/2019 08:35:45 PM FEED MONEY: $2.00 $2.00
+10/11/2019 08:35:45 PM GIVE CHANGE: $2.00 $0.00
+10/11/2019 08:35:45 PM FEED MONEY: $10.00 $10.00
+10/11/2019 08:35:45 PM GIVE CHANGE: $10.00 $0.00
+10/11/2019 08:35:45 PM FEED MONEY: $20.00 $20.00
+10/11/2019 08:35:45 PM GIVE CHANGE: $20.00 $0.00
+10/11/2019 08:35:45 PM FEED MONEY: $50.00 $50.00
+10/11/2019 08:35:45 PM GIVE CHANGE: $50.00 $0.00

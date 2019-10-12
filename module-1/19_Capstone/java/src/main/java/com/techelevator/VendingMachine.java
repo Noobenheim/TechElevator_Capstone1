@@ -20,7 +20,10 @@ public class VendingMachine {
 	
 	private AuditLog log = new AuditLog("Log.txt");
 	
-	public VendingMachine(String inventoryInputFile) {
+	public VendingMachine(String inventoryInputFile) throws BadFileException {
+		if( inventoryInputFile == null || inventoryInputFile.equals("") ) {
+			return;
+		}
 		File file = new File(inventoryInputFile);
 		try(Scanner fileScanner = new Scanner(file)) {
 			while( fileScanner.hasNextLine() ) {
@@ -28,8 +31,7 @@ public class VendingMachine {
 				String[] split = line.split("\\|");
 				
 				if( split.length != 4 ) {
-					System.out.println("Invalid format in file.");
-					System.exit(1);
+					throw new BadFileException("Invalid format in file.");
 				}
 				
 				String slot = split[0];
@@ -38,16 +40,14 @@ public class VendingMachine {
 				try {
 					price = Double.parseDouble(split[2]);
 				} catch( NumberFormatException e ) {
-					System.out.println("Price \""+split[2]+"\" is not a valid price.");
-					System.exit(1);
+					throw new BadFileException(String.format("Price \"%s\" is not a valid price.", split[2]));
 				}
 				String type = split[3];
 				
 				loadItems(slot, name, price, type);
 			}
 		} catch (FileNotFoundException e) {
-			System.out.println("File \""+inventoryInputFile+"\" not found.");
-			System.exit(1);
+			throw new BadFileException(String.format("File \"%s\" not found.", inventoryInputFile));
 		}
 	}
 	
@@ -187,5 +187,13 @@ public class VendingMachine {
 		log.log(String.format("GIVE CHANGE: $%.2f $%.2f", (copy.getBalance()/100.0), this.getMoneyInMachine()));
 		
 		return copy;
+	}
+	
+	class BadFileException extends Exception {
+		private static final long serialVersionUID = -35013279513318912L;
+		
+		public BadFileException(String message) {
+			super(message);
+		}
 	}
 }

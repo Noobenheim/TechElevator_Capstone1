@@ -50,4 +50,31 @@ public class SlotTest {
 		Assert.assertTrue(actual.addItem());
 		Assert.assertEquals(5, actual.getQuantity());
 	}
+	
+	@Test
+	public void empty_item() {
+		Assert.assertNull(actual.getItem());
+		Assert.assertFalse(actual.hasItem());
+	}
+	
+	@Test
+	public void equals_test() {
+		Slot expected = new Slot();
+		
+		Assert.assertNotEquals(actual, new String(""));
+		Assert.assertNotEquals(new Integer(81), actual);
+		
+		expected.setMaximumItems(4);
+		Assert.assertNotEquals(expected, actual);
+		expected.setMaximumItems(actual.getMaximumItems());
+		Assert.assertEquals(expected, actual);
+		expected.addItem(new Gum("Bubble", 0.60));
+		Assert.assertNotEquals(expected, actual);
+		expected = new Slot();
+		Assert.assertEquals(expected, actual);
+		actual.addItem(new Gum("Grape", 0.50));
+		Assert.assertNotEquals(expected, actual);
+		expected.addItem(new Candy("KitKat", 1.35));
+		Assert.assertNotEquals(expected, actual);
+	}
 }

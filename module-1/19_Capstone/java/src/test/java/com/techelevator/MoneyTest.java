@@ -23,8 +23,10 @@ public class MoneyTest {
 		money.addHundredDollars(2);
 		Assert.assertEquals(20020, money.getBalance());
 		
-		money.subtractBalance(10000);
+		Assert.assertTrue(money.subtractBalance(10000));
 		Assert.assertEquals(10020, money.getBalance());
+		
+		Assert.assertFalse(money.subtractBalance(30000));
 	}
 	
 	@Test
@@ -147,6 +149,15 @@ public class MoneyTest {
 	}
 	
 	@Test
+	public void convert_to_invalid() {
+		Money copy = Money.copy(money);
+		
+		money.convertToDenomination(72);
+		
+		Assert.assertEquals(copy, money);
+	}
+	
+	@Test
 	public void clearing_money() {
 		money.addDime(100);
 		money.addNickel(58);
@@ -172,5 +183,79 @@ public class MoneyTest {
 		
 		Assert.assertEquals(expected, money);
 		Assert.assertNotSame(expected, money);
+	}
+	
+	@Test
+	public void equals_test() {
+		Money copy = Money.copy(money);
+		
+		Assert.assertNotEquals("false", money);
+		Assert.assertNotEquals(money, new Integer(8));
+		
+		Assert.assertEquals(copy, money);
+		money.addFiftyDollars();
+		Assert.assertNotEquals(copy, money);
+		copy.addTenDollars(5);
+		Assert.assertEquals(copy.getBalance(), money.getBalance());
+		Assert.assertNotEquals(copy, money);
+		copy.clear();
+		money.clear();
+		Assert.assertEquals(copy, money);
+		copy.addFiveDollars(2);
+		money.addTenDollars();
+		Assert.assertEquals(copy.getBalance(), money.getBalance());
+		Assert.assertNotEquals(copy, money);
+		copy.clear();
+		money.clear();
+		Assert.assertEquals(copy, money);
+		copy.addTwentyDollars();
+		money.addTenDollars(2);
+		Assert.assertEquals(copy.getBalance(), money.getBalance());
+		Assert.assertNotEquals(copy, money);
+		copy.clear();
+		money.clear();
+		Assert.assertEquals(copy, money);
+		copy.addPenny(500);
+		money.addFiveDollars();
+		Assert.assertEquals(copy.getBalance(), money.getBalance());
+		Assert.assertNotEquals(copy, money);
+		copy.clear();
+		money.clear();
+		Assert.assertEquals(copy, money);
+		copy.addTwoDollars();
+		money.addDollar(2);
+		Assert.assertEquals(copy.getBalance(), money.getBalance());
+		Assert.assertNotEquals(copy, money);
+		copy.clear();
+		money.clear();
+		Assert.assertEquals(copy, money);
+		copy.addDollar();
+		money.addQuarter(4);
+		Assert.assertEquals(copy.getBalance(), money.getBalance());
+		Assert.assertNotEquals(copy, money);
+		copy.clear();
+		money.clear();
+		Assert.assertEquals(copy, money);
+		copy.addQuarter();
+		money.addNickel(5);
+		Assert.assertEquals(copy.getBalance(), money.getBalance());
+		Assert.assertNotEquals(copy, money);
+		copy.clear();
+		money.clear();
+		Assert.assertEquals(copy, money);
+		copy.addDime();
+		money.addNickel(2);
+		Assert.assertEquals(copy.getBalance(), money.getBalance());
+		Assert.assertNotEquals(copy, money);
+		copy.clear();
+		money.clear();
+		Assert.assertEquals(copy, money);
+		copy.addNickel();
+		money.addPenny(5);
+		Assert.assertEquals(copy.getBalance(), money.getBalance());
+		Assert.assertNotEquals(copy, money);
+		copy.clear();
+		money.clear();
+		Assert.assertEquals(copy, money);
 	}
 }

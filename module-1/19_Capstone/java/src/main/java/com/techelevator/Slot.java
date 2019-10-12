@@ -61,7 +61,13 @@ public class Slot extends Inventory {
 			return false;
 		}
 		Slot test = (Slot)o;
-		if( !test.itemCompare.equals(this.getItem()) ) {
+		if( test.itemCompare == null && this.itemCompare != null ) {
+			return false;
+		}
+		if( test.itemCompare != null && this.itemCompare == null ) {
+			return false;
+		}
+		if( test.itemCompare != null && !test.itemCompare.equals(this.getItem()) ) {
 			return false;
 		}
 		if( this.getMaximumItems() != test.getMaximumItems() ) {

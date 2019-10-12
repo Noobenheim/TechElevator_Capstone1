@@ -10,13 +10,14 @@ import org.junit.Test;
 import com.techelevator.Money;
 import com.techelevator.Slot;
 import com.techelevator.VendingMachine;
+import com.techelevator.VendingMachine.BadFileException;
 import com.techelevator.items.*;
 
 public class VendingMachineTest {
 	VendingMachine machine;
 	
 	@Before
-	public void setup() {
+	public void setup() throws VendingMachine.BadFileException {
 		this.machine = new VendingMachine("vendingmachine.csv");
 	}
 	
@@ -157,7 +158,7 @@ public class VendingMachineTest {
 	@Test
 	public void ensure_has_balance() {
 		Assert.assertFalse(machine.hasBalanceFor("A1"));
-		machine.putMoneyInMachine(Money.FIVE_DOLLAR_BILL);
+		Assert.assertTrue(machine.putMoneyInMachine(Money.FIVE_DOLLAR_BILL));
 		Assert.assertTrue(machine.hasBalanceFor("A1"));
 	}
 	
@@ -165,5 +166,64 @@ public class VendingMachineTest {
 	public void choice_exists() {
 		Assert.assertTrue(machine.choiceExists("a1"));
 		Assert.assertFalse(machine.choiceExists("e192"));
+	}
+	
+	@Test
+	public void test_currencies() {
+		Assert.assertTrue(machine.putMoneyInMachine(Money.TWO_DOLLAR_BILL));
+		Assert.assertEquals(2, machine.getMoneyInMachine(), 0.001);
+		machine.getChange();
+		Assert.assertTrue(machine.putMoneyInMachine(Money.TEN_DOLLAR_BILL));
+		Assert.assertEquals(10, machine.getMoneyInMachine(), 0.001);
+		machine.getChange();
+		Assert.assertTrue(machine.putMoneyInMachine(Money.TWENTY_DOLLAR_BILL));
+		Assert.assertEquals(20, machine.getMoneyInMachine(), 0.001);
+		machine.getChange();
+		Assert.assertTrue(machine.putMoneyInMachine(Money.FIFTY_DOLLAR_BILL));
+		Assert.assertEquals(50, machine.getMoneyInMachine(), 0.001);
+		machine.getChange();
+		Assert.assertFalse(machine.putMoneyInMachine(92));
+		Assert.assertEquals(0, machine.getMoneyInMachine(), 0.001);
+	}
+	
+	@Test
+	public void test_invalid_items() {
+		Assert.assertFalse(machine.hasQuantity("U8"));
+		Assert.assertFalse(machine.hasBalanceFor("Y9"));
+	}
+	
+	@Test
+	public void bad_files() {
+		try {
+			machine = new VendingMachine(this.getClass().getResource("empty-file.txt").getFile());
+			machine = new VendingMachine(null);
+			machine = new VendingMachine("");
+		} catch (BadFileException e) {
+			Assert.fail(); // allow empty file
+		}
+		
+		try {
+			machine = new VendingMachine("not-a-file");
+			Assert.fail();
+		} catch (BadFileException e) {
+		}
+		
+		try {
+			machine = new VendingMachine(this.getClass().getResource("Bad-Format.txt").getFile());
+			Assert.fail();
+		} catch( BadFileException e ) {
+		}
+
+		try {
+			machine = new VendingMachine(this.getClass().getResource("bad-number.txt").getFile());
+			Assert.fail();
+		} catch( BadFileException e ) {
+		}
+
+		try {
+			machine = new VendingMachine(this.getClass().getResource("bad-type.txt").getFile());
+			Assert.fail();
+		} catch( BadFileException e ) {
+		}
 	}
 }

@@ -79,10 +79,14 @@ public class InventoryTest {
 		Assert.assertEquals(2, inventory.getQuantity(thirdItem));
 		Assert.assertEquals(4, inventory.getQuantity(secondItem));
 		Assert.assertEquals(1, inventory.getQuantity(firstItem));
+		
+		Assert.assertEquals(0, inventory.getQuantity(new Drink("Mountain Fizz", 1.00)));
 	}
 	
 	@Test
 	public void ensure_boolean_return_from_remove() {
+		Assert.assertFalse(inventory.removeItem(thirdItem));
+		
 		inventory.addItem(firstItem);
 		inventory.addItem(secondItem);
 		
@@ -102,5 +106,14 @@ public class InventoryTest {
 		Assert.assertFalse(inventory.hasItem(firstItem));
 		
 		Assert.assertFalse(inventory.hasItem(secondItem));
+	}
+	
+	@Test
+	public void add_multiple_items_of_the_same() {
+		inventory.addItem(firstItem, 3);
+		Assert.assertEquals(3, inventory.getQuantity(firstItem));
+		
+		inventory.addItem(firstItem, 2);
+		Assert.assertEquals(5, inventory.getQuantity(firstItem));
 	}
 }

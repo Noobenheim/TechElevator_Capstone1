@@ -244,9 +244,10 @@ public class Money {
 		if( this.getNickels() != test.getNickels() ) {
 			return false;
 		}
-		if( this.getPennies() != test.getPennies() ) {
-			return false;
-		}
+// this will always pass since balance is up top
+//		if( this.getPennies() != test.getPennies() ) {
+//			return false;
+//		}
 		
 		return true;
 	}

@@ -2,6 +2,7 @@ package com.techelevator;
 
 import java.util.Map;
 
+import com.techelevator.VendingMachine.BadFileException;
 import com.techelevator.items.Item;
 import com.techelevator.view.Menu;
 
@@ -27,7 +28,11 @@ public class VendingMachineCLI {
 	
 	public VendingMachineCLI() {
 		menu = new Menu(System.in, System.out);
-		machine = new VendingMachine("vendingmachine.csv");
+		try {
+			machine = new VendingMachine("vendingmachine.csv");
+		} catch (BadFileException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public void run() {
