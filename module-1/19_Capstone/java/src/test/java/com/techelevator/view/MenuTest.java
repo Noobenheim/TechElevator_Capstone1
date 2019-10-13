@@ -25,7 +25,7 @@ public class MenuTest {
 
 		menu.getChoiceFromOptions(options);
 
-		String expected = "\n" + "1) " + options[0].toString() + "\n" + "2) " + options[1].toString() + "\n" + "3) "
+		String expected = "\n" + "(1) " + options[0].toString() + "\n" + "(2) " + options[1].toString() + "\n" + "(3) "
 				+ options[2].toString() + "\n\n" + "Please choose an option >>> ";
 		Assert.assertEquals(expected, output.toString());
 	}
@@ -48,7 +48,7 @@ public class MenuTest {
 
 		menu.getChoiceFromOptions(options);
 
-		String menuDisplay = "\n" + "1) " + options[0].toString() + "\n" + "2) " + options[1].toString() + "\n" + "3) "
+		String menuDisplay = "\n" + "(1) " + options[0].toString() + "\n" + "(2) " + options[1].toString() + "\n" + "(3) "
 				+ options[2].toString() + "\n\n" + "Please choose an option >>> ";
 
 		String expected = menuDisplay + "\n*** 4 is not a valid option ***\n\n" + menuDisplay;
@@ -63,7 +63,7 @@ public class MenuTest {
 
 		menu.getChoiceFromOptions(options);
 
-		String menuDisplay = "\n" + "1) " + options[0].toString() + "\n" + "2) " + options[1].toString() + "\n" + "3) "
+		String menuDisplay = "\n" + "(1) " + options[0].toString() + "\n" + "(2) " + options[1].toString() + "\n" + "(3) "
 				+ options[2].toString() + "\n\n" + "Please choose an option >>> ";
 
 		String expected = menuDisplay + "\n*** 0 is not a valid option ***\n\n" + menuDisplay;
@@ -78,8 +78,66 @@ public class MenuTest {
 
 		menu.getChoiceFromOptions(options);
 
-		String menuDisplay = "\n" + "1) " + options[0].toString() + "\n" + "2) " + options[1].toString() + "\n" + "3) "
+		String menuDisplay = "\n" + "(1) " + options[0].toString() + "\n" + "(2) " + options[1].toString() + "\n" + "(3) "
 				+ options[2].toString() + "\n\n" + "Please choose an option >>> ";
+
+		String expected = menuDisplay + "\n*** Mickey Mouse is not a valid option ***\n\n" + menuDisplay;
+
+		Assert.assertEquals(expected, output.toString());
+	}
+	
+	@Test
+	public void allow_any_input_returned() {
+		Object[] options = new Object[] { "Larry", "Curly", "Moe" };
+		String expected = "Mickey Mouse";
+		Menu menu = getMenuForTestingWithUserInput(expected+"\n");
+		
+		String actual = (String)menu.getChoiceFromOptions(options, true);
+		
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void allow_any_numeric_input_returned() {
+		Object[] options = new Object[] { "Larry", "Curly", "Moe" };
+		int expected = 4;
+		Menu menu = getMenuForTestingWithUserInput(expected+"\n");
+		
+		Object actual = menu.getChoiceFromOptions(options, true);
+		
+		Assert.assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void cls_after_input() {
+		Object[] options = new Object[] { "Larry", "Curly", "Moe" };
+		Menu menu = getMenuForTestingWithUserInputCls("Mickey Mouse\n1\n");
+		
+		menu.getChoiceFromOptions(options);
+		
+		StringBuilder sb = new StringBuilder();
+		
+		for( int i=0; i<100; i++ ) {
+			sb.append("\n");
+		}
+		
+		String menuDisplay = "\n" + "(1) " + options[0].toString() + "\n" + "(2) " + options[1].toString() + "\n" + "(3) "
+				+ options[2].toString() + "\n\n" + "Please choose an option >>> ";
+
+		String expected = menuDisplay + sb.toString() + "\n*** Mickey Mouse is not a valid option ***\n\n" + menuDisplay + sb.toString();
+
+		Assert.assertEquals(expected, output.toString());
+	}
+	
+	@Test
+	public void display_under_test() {
+		Object[] options = new Object[] { "Larry", "Curly", "Moe" };
+		Menu menu = getMenuForTestingWithUserInput("Mickey Mouse\n1\n");
+
+		menu.getChoiceFromOptions(options, "Australia");
+
+		String menuDisplay = "\n" + "(1) " + options[0].toString() + "\n" + "(2) " + options[1].toString() + "\n" + "(3) "
+				+ options[2].toString() + "\n\nAustralia\n\n" + "Please choose an option >>> ";
 
 		String expected = menuDisplay + "\n*** Mickey Mouse is not a valid option ***\n\n" + menuDisplay;
 
@@ -93,5 +151,14 @@ public class MenuTest {
 
 	private Menu getMenuForTesting() {
 		return getMenuForTestingWithUserInput("1\n");
+	}
+
+	private Menu getMenuForTestingWithUserInputCls(String userInput) {
+		ByteArrayInputStream input = new ByteArrayInputStream(String.valueOf(userInput).getBytes());
+		return new Menu(input, output, true);
+	}
+
+	private Menu getMenuForTestingCls() {
+		return getMenuForTestingWithUserInputCls("1\n");
 	}
 }

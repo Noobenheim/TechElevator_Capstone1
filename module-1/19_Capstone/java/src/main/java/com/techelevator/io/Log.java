@@ -11,7 +11,7 @@ public abstract class Log implements Closeable {
 	protected PrintWriter fileWriter = null;
 	private String format = "";
 	
-	public Log(String fileName, String format) {
+	public Log(String fileName, String format) throws IOException {
 		if( fileName == null || fileName.equals("") ) {
 			throw new IllegalArgumentException("Filename must not be blank");
 		}
@@ -19,11 +19,7 @@ public abstract class Log implements Closeable {
 		this.auditFile = new File(fileName);
 		this.format = format;
 		
-		try {
-			fileWriter = new PrintWriter(new FileWriter(auditFile, true));
-		} catch( IOException e ) {
-			e.printStackTrace();
-		}
+		fileWriter = new PrintWriter(new FileWriter(auditFile, true));
 	}
 	
 	protected void log(Object...objects) {

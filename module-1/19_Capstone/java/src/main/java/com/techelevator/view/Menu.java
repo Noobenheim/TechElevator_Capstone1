@@ -9,10 +9,15 @@ public class Menu {
 
 	private PrintWriter out;
 	private Scanner in;
+	private boolean clsAfterInput = false;
 
 	public Menu(InputStream input, OutputStream output) {
 		this.out = new PrintWriter(output);
 		this.in = new Scanner(input);
+	}
+	public Menu(InputStream input, OutputStream output, boolean clsAfterInput) {
+		this(input, output);
+		this.clsAfterInput = clsAfterInput;
 	}
 
 	public Object getChoiceFromOptions(Object[] options) {
@@ -36,7 +41,9 @@ public class Menu {
 	private Object getChoiceFromUserInput(Object[] options, boolean returnAnything) {
 		Object choice = null;
 		String userInput = in.nextLine();
-		cls();
+		if( this.clsAfterInput ) {
+			cls();
+		}
 		try {
 			int selectedOption = Integer.valueOf(userInput);
 			if (selectedOption > 0 && selectedOption <= options.length) {
@@ -48,7 +55,11 @@ public class Menu {
 			// eat the exception, an error message will be displayed below since choice will be null
 		}
 		if (choice == null) {
-			displayInvalidSelection(userInput);
+			if( returnAnything ) {
+				choice = userInput;
+			} else {
+				displayInvalidSelection(userInput);
+			}
 		}
 		return choice;
 	}

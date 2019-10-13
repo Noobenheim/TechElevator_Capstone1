@@ -1,5 +1,7 @@
 package com.techelevator;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Map;
 
 import com.techelevator.io.SalesLog;
@@ -24,7 +26,7 @@ public class VendingMachineCLI {
 	
 	private VendingMachine machine;
 	private Menu menu;
-	private UserInput userInput = new UserInput();
+	private UserInput userInput = new UserInput(System.in);
 	
 	public static void main(String[] args) {
 		VendingMachineCLI program = new VendingMachineCLI();
@@ -32,10 +34,10 @@ public class VendingMachineCLI {
 	}
 	
 	public VendingMachineCLI() {
-		menu = new Menu(System.in, System.out);
+		menu = new Menu(System.in, System.out, true);
 		try {
 			machine = new VendingMachine("vendingmachine.csv");
-		} catch (BadFileException e) {
+		} catch (BadFileException | IOException e) {
 			e.printStackTrace();
 		}
 	}
@@ -57,9 +59,13 @@ public class VendingMachineCLI {
 			if (choice.equals(MAIN_MENU_OPTION_DISPLAY_ITEMS)) {
 				displayItems();
 			} else if ( choice.equals("4") ) {
-				SalesLog.generateLog("sales reports", machine.getInventory().values());
-				
-				System.out.println("Report has been generated.\n\nThank you!\n\n");
+				try {
+					SalesLog.generateLog("sales reports", machine.getInventory().values());
+					
+					System.out.println("Report has been generated.\n\nThank you!\n\n");
+				} catch( IOException e ) {
+					System.out.println("An error occurred when generating sales report: "+e.getMessage());
+				}
 			} else if (choice.equals(MAIN_MENU_OPTION_PURCHASE)) {
 				do {
 					choice = (String) menu.getChoiceFromOptions(PURCHASE_MENU_OPTIONS, getBalanceMessage());

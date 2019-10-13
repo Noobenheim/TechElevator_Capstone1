@@ -1,5 +1,6 @@
-package com.techelevator;
+package com.techelevator.vendingmachine;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,7 +17,7 @@ public class VendingMachineTest {
 	VendingMachine machine;
 	
 	@Before
-	public void setup() throws VendingMachine.BadFileException {
+	public void setup() throws VendingMachine.BadFileException, IOException {
 		this.machine = new VendingMachine("vendingmachine.csv");
 	}
 	
@@ -192,7 +193,7 @@ public class VendingMachineTest {
 	}
 	
 	@Test
-	public void bad_files() {
+	public void bad_files() throws IOException {
 		try {
 			machine = new VendingMachine(this.getClass().getResource("empty-file.txt").getFile());
 			machine = new VendingMachine(null);

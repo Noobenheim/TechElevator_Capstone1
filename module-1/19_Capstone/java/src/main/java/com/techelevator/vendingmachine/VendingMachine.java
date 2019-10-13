@@ -2,6 +2,7 @@ package com.techelevator.vendingmachine;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -20,12 +21,15 @@ public class VendingMachine {
 	private Map<String,Slot> inventory = new LinkedHashMap<>();
 	private Money money = new Money();
 	
-	private AuditLog log = new AuditLog("Log.txt");
+	private AuditLog log;
 	
-	public VendingMachine(String inventoryInputFile) throws BadFileException {
+	public VendingMachine(String inventoryInputFile) throws BadFileException, IOException {
 		if( inventoryInputFile == null || inventoryInputFile.equals("") ) {
-			return;
+			return; // just an empty vending machine
 		}
+		
+		log = new AuditLog("Log.txt");
+		
 		File file = new File(inventoryInputFile);
 		try(Scanner fileScanner = new Scanner(file)) {
 			while( fileScanner.hasNextLine() ) {
@@ -53,10 +57,10 @@ public class VendingMachine {
 		}
 	}
 	
-	private void loadItems(String slotName, String name, double price, String type) {
+	private void loadItems(String slotName, String name, double price, String type) throws BadFileException {
 		loadItems(slotName, name, price, type, MAX_ITEMS);
 	}
-	private void loadItems(String slotName, String name, double price, String type, int quantity) {
+	private void loadItems(String slotName, String name, double price, String type, int quantity) throws BadFileException {
 		Item item;
 		Slot slot = new Slot();
 		
@@ -75,7 +79,7 @@ public class VendingMachine {
 				item = new Gum(name, price);
 				break;
 			default:
-				return;
+				throw new BadFileException("Unknown type: "+type);
 		}
 		
 		slot.addItem(item, quantity);

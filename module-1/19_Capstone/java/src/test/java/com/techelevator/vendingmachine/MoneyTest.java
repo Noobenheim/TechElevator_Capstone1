@@ -1,4 +1,4 @@
-package com.techelevator;
+package com.techelevator.vendingmachine;
 
 import org.junit.Before;
 import org.junit.Test;

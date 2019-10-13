@@ -5,13 +5,9 @@ public abstract class Item {
 	private int price;
 	private String sound;
 	
-	public Item(String name, int price) {
-		this.name = name;
-		this.price = price;
-	}
 	public Item(String name, double price) {
 		this.name = name;
-		this.price = (int)(price * 100.0);
+		this.price = (int)Math.round(price * 100.0);
 	}
 
 	public String getName() {
@@ -41,10 +37,7 @@ public abstract class Item {
 		if( test.getCents() != this.getCents() ) {
 			return false;
 		}
-		if( !test.getName().equals(test.getName()) ) {
-			return false;
-		}
-		if( test.getPrice() != this.getPrice() ) {
+		if( !test.getName().equals(this.getName()) ) {
 			return false;
 		}
 		if( !test.getSound().equals(this.getSound()) ) {

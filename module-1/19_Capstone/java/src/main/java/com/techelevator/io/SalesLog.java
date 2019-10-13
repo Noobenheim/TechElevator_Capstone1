@@ -24,16 +24,21 @@ public class SalesLog {
 	
 	private static Map<String,Integer> lastInventoryLogged = new HashMap<>();
 	
+	private static String lastErrorMessage = null;
+	
 	private SalesLog() {}
 	
-	public static void generateLog(String logDirectory, Collection<Slot> inventory) {
+	public static void generateLog(String logDirectory, Collection<Slot> inventory) throws IOException {
+		generateLog(logDirectory, inventory, Calendar.getInstance());
+	}
+	public static void generateLog(String logDirectory, Collection<Slot> inventory, Calendar cal) throws IOException {
 		// find the latest log file
 		PreviousInformation previous = readLatestLog(new File(logDirectory));
 		// write new information
-		writeNewLog(logDirectory, previous, inventory);
+		writeNewLog(logDirectory, previous, inventory, cal);
 	}
 	
-	private static PreviousInformation readLatestLog(File directory) {
+	private static PreviousInformation readLatestLog(File directory) throws FileNotFoundException {
 		Map<String,Integer> totals = new HashMap<>();
 		double totalSales = 0.0;
 		
@@ -52,57 +57,55 @@ public class SalesLog {
 			}
 			
 			File latestFile = files[files.length-1];
-			try(Scanner fileScanner = new Scanner(latestFile)) {
-				while( fileScanner.hasNextLine() ) {
-					String line = fileScanner.nextLine();
-					if( line.trim().equals("") ) {
-						// next line should be total sales
-						if( fileScanner.hasNextLine() ) {
-							line = fileScanner.nextLine();
-							if( line.length() <= TOTAL_SALES_STRING.length() || line.indexOf(TOTAL_SALES_STRING) != 0 ) {
-								System.out.println("Unknown previous total sales");
-								break;
-							}
-							try {
-								totalSales = Double.parseDouble(line.substring(13));
-								break;
-							} catch( NumberFormatException e ) {
-								System.out.println("Unknown total sales: "+line);
-								break;
-							}
-						} else {
-							System.out.println("Unknown total sales. No sales total line.");
+			Scanner fileScanner = new Scanner(latestFile);
+			while( fileScanner.hasNextLine() ) {
+				String line = fileScanner.nextLine();
+				if( line.trim().equals("") ) {
+					// next line should be total sales
+					if( fileScanner.hasNextLine() ) {
+						line = fileScanner.nextLine();
+						if( line.length() <= TOTAL_SALES_STRING.length() || line.indexOf(TOTAL_SALES_STRING) != 0 ) {
+							lastErrorMessage = "Unknown previous total sales";
 							break;
 						}
-					} else if( !line.contains("|") ) {
-						System.out.println("Unknown format: "+line);
-						break;
-					} else {
-						String[] split = line.split("\\|");
-						if( split.length != 2 ) {
-							System.out.println("Unknown format: "+line);
-							break;
-						}
-						String name = split[0];
-						int quantity = 0;
 						try {
-							quantity = Integer.parseInt(split[1]);
+							totalSales = Double.parseDouble(line.substring(13));
+							break;
 						} catch( NumberFormatException e ) {
-							System.out.println("Unknown number: "+split[1]);
+							lastErrorMessage = "Unknown total sales: "+line;
 							break;
 						}
-						totals.put(name, quantity);
+					} else {
+						lastErrorMessage = "Unknown total sales. No sales total line.";
+						break;
 					}
+				} else if( !line.contains("|") ) {
+					lastErrorMessage = "Unknown format: "+line;
+					break;
+				} else {
+					String[] split = line.split("\\|");
+					if( split.length != 2 ) {
+						lastErrorMessage = "Unknown format: "+line;
+						break;
+					}
+					String name = split[0];
+					int quantity = 0;
+					try {
+						quantity = Integer.parseInt(split[1]);
+					} catch( NumberFormatException e ) {
+						lastErrorMessage = "Unknown number: "+split[1];
+						break;
+					}
+					totals.put(name, quantity);
 				}
-			} catch (FileNotFoundException e) {
-				System.out.println("Unable to read latest log file");
 			}
+			fileScanner.close();
 		}
 		
 		return new PreviousInformation(totals, totalSales);
 	}
 	
-	private static void writeNewLog(String directory, PreviousInformation previous, Collection<Slot> current) {
+	private static void writeNewLog(String directory, PreviousInformation previous, Collection<Slot> current, Calendar date) throws IOException {
 		// add the current inventory and the previous inventory
 		Map<String,Integer> inventory = new HashMap<>();
 		
@@ -112,22 +115,22 @@ public class SalesLog {
 		}
 		// loop through current that hasn't been logged
 		double currentTotal = 0.0;
-		for( Slot slot : current ) {
-			String name = slot.getItem().getName();
-			int lastQuantity = lastInventoryLogged.containsKey(name)?lastInventoryLogged.get(name):VendingMachine.MAX_ITEMS;
-			int quantity = lastQuantity - slot.getQuantity();
-			double price = slot.getItem().getPrice();
-			
-			if( inventory.containsKey(name) ) {
-				inventory.put(name, inventory.get(name)+quantity);
-			} else {
-				inventory.put(name, quantity);
+		if( current != null ) {
+			for( Slot slot : current ) {
+				String name = slot.getItem().getName();
+				int lastQuantity = lastInventoryLogged.containsKey(name)?lastInventoryLogged.get(name):VendingMachine.MAX_ITEMS;
+				int quantity = lastQuantity - slot.getQuantity();
+				double price = slot.getItem().getPrice();
+				
+				if( inventory.containsKey(name) ) {
+					inventory.put(name, inventory.get(name)+quantity);
+				} else {
+					inventory.put(name, quantity);
+				}
+				
+				currentTotal += quantity * price;
 			}
-			
-			currentTotal += quantity * price;
 		}
-		
-		Calendar date = Calendar.getInstance();
 		
 		String filename = String.format("%04d-%02d-%02d %02d_%02d_%02d %s %s", 
 				date.get(Calendar.YEAR), date.get(Calendar.MONTH)+1, date.get(Calendar.DATE),
@@ -138,23 +141,26 @@ public class SalesLog {
 		File output = new File(directory, filename);
 		// ensure it doesn't exist
 		if( output.exists() ) {
-			System.out.println("Log file already exists.");
-			return;
+			throw new IllegalStateException("Log file \""+filename+"\" already exists.");
 		}
-		try(PrintWriter writer = new PrintWriter(new FileWriter(output))) {
-			for( Map.Entry<String,Integer> entry : inventory.entrySet() ) {
-				writer.format("%s|%d\n", entry.getKey(), entry.getValue());
-			}
-			writer.println();
-			writer.format("%s%.2f", TOTAL_SALES_STRING, (currentTotal + previous.previousSales));
-			writer.flush();
-			
+		PrintWriter writer = new PrintWriter(new FileWriter(output));
+		for( Map.Entry<String,Integer> entry : inventory.entrySet() ) {
+			writer.format("%s|%d\n", entry.getKey(), entry.getValue());
+		}
+		writer.println();
+		writer.format("%s%.2f", TOTAL_SALES_STRING, (currentTotal + previous.getSales()));
+		writer.flush();
+		writer.close();
+		
+		if( current != null ) {
 			for( Slot slot : current ) {
 				lastInventoryLogged.put(slot.getItem().getName(), slot.getQuantity());
-			};
-		} catch (IOException e) {
-			System.out.println("Unable to write to file "+filename);
+			}
 		}
+	}
+	
+	public static String getLastErrorMessage() {
+		return lastErrorMessage;
 	}
 	
 	static class SalesLogFilenameFilter implements FilenameFilter {
